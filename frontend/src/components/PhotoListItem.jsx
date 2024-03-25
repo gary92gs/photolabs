@@ -1,17 +1,21 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
 
 
 const PhotoListItem = (props) => {
+  console.log(props);
   //deconstruct sampledata/props
-  const {id, location, imageSource, username, profile} = props.itemInfo;
+  const {location, imageSource, username, profile} = props.itemInfo;
+
 
   /* Insert React */
   return (
-    <div key={props.key} className="photo-list__item">
+    <div className="photo-list__item">
+      <PhotoFavButton/>
       <img src={imageSource} className="photo-list__image" alt="posting image" />
       <div className="photo-list__user-details">
         <img src={profile} className="photo-list__user-profile" alt="photographer image" />
