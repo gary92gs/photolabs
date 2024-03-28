@@ -9,8 +9,8 @@ const sampleDataForTopicListItem = {
 };
 
 const TopicListItem = (props) => {
-  console.log(props.itemInfo);
   const {slug,title} = props.itemInfo;
+  
   return (
     <div className="topic-list__item">
       <span>{title}</span>
