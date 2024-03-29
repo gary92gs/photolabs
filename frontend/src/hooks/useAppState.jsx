@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-export const useFavourites = (defaultState) => {
+export const useAppState = (defaultState) => {
 
   // action: { type, data }
   const reducer = (state, action) => {
