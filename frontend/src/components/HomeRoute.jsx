@@ -3,12 +3,14 @@ import React from 'react';
 import TopNavigation from './TopNavigationBar';
 import PhotoList from './PhotoList';
 
-const HomeRoute = () => {
+
+const HomeRoute = (props) => {
+  const {photos, topics} = props;
 
   return (
     <>
-      <TopNavigation/>
-      <PhotoList/>
+      <TopNavigation topics={topics}/>
+      <PhotoList photos={photos}/>
     </>
   );
 };
