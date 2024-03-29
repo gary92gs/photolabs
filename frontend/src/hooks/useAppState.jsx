@@ -26,10 +26,17 @@ export const useAppState = (defaultState) => {
           };
         }
         break;
+      case 'displayModal':
+        //action.data for modal should be empty when closing and full when opening (no need for if logic)
+        return {
+          ...state,
+          modalInfo: action.data
+        }
+        break;
     }
   };
 
   const [state, dispatch] = useReducer(reducer, defaultState);
 
-  return {state, dispatch};
+  return { state, dispatch };
 };

@@ -1,12 +1,28 @@
 import React from 'react';
 
-import '../styles/HomeRoute.scss';
+import TopNavigation from '../components/TopNavigationBar';
+import PhotoList from '../components/PhotoList';
 
-const HomeRoute = () => {
+
+
+const HomeRoute = (props) => {
+  const { photos, topics, favouritesState, toggleFavourite, toggleModalDisplay} = props;
+  // const defaultState = {
+  //   favourites: [],
+  // };
+
+  // const { state, dispatch } = useAppState(defaultState);
+  // const { photos, topics } = props;
+
+  // const toggleFavourite = (photoId) => {
+  //   dispatch({ type: 'toggleFavourite', data: photoId });
+  // };
+
   return (
-    <div className="home-route">
-      {/* Insert React */}
-    </div>
+    <>
+      <TopNavigation topics={topics} favouritesState={favouritesState}/>
+      <PhotoList photos={photos} favouritesState={favouritesState} toggleFavourite={toggleFavourite} toggleModalDisplay={toggleModalDisplay}/>
+    </>
   );
 };
 
