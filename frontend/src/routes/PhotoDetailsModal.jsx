@@ -9,10 +9,18 @@ import PhotoListItem from 'components/PhotoListItem';
 
 const PhotoDetailsModal = (props) => {
 
-  const { favouritesState, toggleFavourite } = props;
+  const { state, toggleModalDisplay } = props.appStateObj;
 
-  const { modalInfo, toggleModalDisplay } = props;
-  const { id, location, urls, user, similar_photos} = modalInfo;
+  const similarPhotoIds = Object.values(state.modalInfo.similar_photos).map(element => element.id);
+  const similarAppData = props.appData.photos.filter(element => similarPhotoIds.includes(element.id))
+
+  //re-create props with shorter list of photos to pass to photo-list
+  const editedProps = {
+    ...props,
+    appData: {
+      photos: similarAppData,
+    },
+  }
 
   return (
     <div className="photo-details-modal">
@@ -20,21 +28,9 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      {/* <div className="photo-list__item">
-        <PhotoFavButton id={id} favouritesState={favouritesState} toggleFavourite={toggleFavourite} />
-        <img src={urls.full} className="photo-list__image" alt="modal image" />
-        <div className="photo-list__user-details">
-          <img src={user.profile} className="photo-list__user-profile" alt="photographer image" />
-          <div className="photo-list__user-info">
-            <p >{user.username}</p>
-            <p className="photo-list__user-location">{location.city}, {location.country}</p>
-          </div>
-        </div>
-      </div> */}
+      <PhotoListItem itemInfo={state.modalInfo} {...props} isModal={true}/>
 
-      {/* <PhotoListItem/> */}
-
-      {/* <PhotoList photos={Object.values(similar_photos)} favouritesState={favouritesState} toggleFavourite={toggleFavourite}/> */}
+      <PhotoList {...editedProps} isModal={true} />
     </div>
   )
 };

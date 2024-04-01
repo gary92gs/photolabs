@@ -27,11 +27,22 @@ const App = () => {
     dispatch({type: 'displayModal', data: photoObj});
   };
 
+  const appData = {
+    photos,
+    topics,
+  }
+
+  const appStateObj = {
+    state,
+    toggleFavourite,
+    toggleModalDisplay,
+  }
+
   return (
     <div className="App">
       <h1>{state.modalInfo.length}</h1>
-      <HomeRoute photos={photos} topics={topics} favouritesState={state.favourites} toggleFavourite={toggleFavourite} toggleModalDisplay={toggleModalDisplay} />
-      {state.modalInfo.id && <PhotoDetailsModal modalInfo={state.modalInfo} favouritesState={state.favourites} toggleFavourite={toggleFavourite} toggleModalDisplay={toggleModalDisplay}/>}
+      <HomeRoute appData={appData} appStateObj={appStateObj} />
+      {state.modalInfo.id && <PhotoDetailsModal appData={appData} appStateObj={appStateObj}/>}
     </div>
   );
 };
