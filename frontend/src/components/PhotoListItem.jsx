@@ -8,6 +8,10 @@ const PhotoListItem = (props) => {
   const { id, location, urls, user } = props.itemInfo;
   const toggleModalDisplay = props.appStateObj.toggleModalDisplay;
 
+  // const classNames = {
+  //   itemContainer: ()
+  // }
+
   return (
     <div className="photo-list__item">
       <PhotoFavButton id={id} appStateObj={props.appStateObj} />
