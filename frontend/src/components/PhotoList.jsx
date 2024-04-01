@@ -5,6 +5,7 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
   const {photos, favouritesState, toggleFavourite, toggleModalDisplay} = props;
+  console.log('photos',photos)
 
   return (
     <ul className="photo-list">

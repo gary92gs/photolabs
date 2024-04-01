@@ -31,7 +31,7 @@ const App = () => {
     <div className="App">
       <h1>{state.modalInfo.length}</h1>
       <HomeRoute photos={photos} topics={topics} favouritesState={state.favourites} toggleFavourite={toggleFavourite} toggleModalDisplay={toggleModalDisplay} />
-      {state.modalInfo.id && <PhotoDetailsModal modalInfo={state.modalInfo} toggleModalDisplay={toggleModalDisplay}/>}
+      {state.modalInfo.id && <PhotoDetailsModal modalInfo={state.modalInfo} favouritesState={state.favourites} toggleFavourite={toggleFavourite} toggleModalDisplay={toggleModalDisplay}/>}
     </div>
   );
 };
