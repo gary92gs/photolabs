@@ -10,7 +10,7 @@ const HomeRoute = (props) => {
   return (
     <>
       <TopNavigation {...props} />
-      <PhotoList {...props} />
+      <PhotoList {...props} elementFor={'main images'} />
     </>
   );
 };

@@ -28,9 +28,9 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
 
-      <PhotoListItem itemInfo={state.modalInfo} {...props} isModal={true}/>
+      <PhotoListItem itemInfo={state.modalInfo} {...props} elementFor={'modal main-image'}/>
 
-      <PhotoList {...editedProps} isModal={true} />
+      <PhotoList {...editedProps} elementFor={'modal similar-images'} />
     </div>
   )
 };

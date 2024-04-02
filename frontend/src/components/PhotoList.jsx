@@ -6,11 +6,10 @@ import PhotoListItem from "./PhotoListItem";
 const PhotoList = (props) => {
 
   const photos = props.appData.photos;
-  const listContainerClassName = props.isModal ? 'photo-details-modal__images':'photo-list'
 
   return (
     <ul className="photo-list">
-      {photos.map(element => <PhotoListItem key={element.id} itemInfo={element} appStateObj={props.appStateObj}/>)}
+      {photos.map(element => <PhotoListItem key={element.id} itemInfo={element} appStateObj={props.appStateObj} elementFor={props.elementFor}/>)}
     </ul>
   );
 };
