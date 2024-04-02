@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppState } from './hooks/useAppState';
+import { useApplicationData } from './hooks/useApplicationData';
 
 import './App.scss';
 
@@ -16,7 +16,7 @@ const App = () => {
     modalInfo: {},
   };
 
-  const { state, dispatch } = useAppState(defaultState);
+  const { state, dispatch } = useApplicationData(defaultState);
 
   const toggleFavourite = (photoId) => {
     dispatch({ type: 'toggleFavourite', data: photoId });

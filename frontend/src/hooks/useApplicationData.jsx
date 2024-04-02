@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 
-export const useAppState = (defaultState) => {
+export const useApplicationData = (defaultState) => {
 
   // action: { type, data }
   const reducer = (state, action) => {
