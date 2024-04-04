@@ -11,12 +11,14 @@ import topics from 'mocks/topics';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  const defaultState = {
+  const initialState = {
+    photos: [],
+    topics: [],
     favourites: [],
     modalInfo: {},
   };
 
-  const { state, dispatch } = useApplicationData(defaultState);
+  const { state, dispatch } = useApplicationData(initialState);
 
   const toggleFavourite = (photoId) => {
     dispatch({ type: 'toggleFavourite', data: photoId });
@@ -28,8 +30,8 @@ const App = () => {
   };
 
   const appData = {
-    photos,
-    topics,
+    photos: state.photos,
+    topics: state.topics,
   }
 
   const appStateObj = {

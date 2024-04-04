@@ -6,7 +6,7 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
-  
+
   const topics = props.appData.topics;
   const favourites = props.appStateObj.state.favourites;
 
