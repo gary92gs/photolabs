@@ -5,11 +5,11 @@ import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
 
-  const photos = props.appData.photos;
+  const { appData, appStateObj, elementFor } = props;
 
   return (
     <ul className="photo-list">
-      {photos.map(element => <PhotoListItem key={element.id} itemInfo={element} appStateObj={props.appStateObj} elementFor={props.elementFor}/>)}
+      {appData.photos.map(element => <PhotoListItem key={element.id} itemInfo={element} appStateObj={appStateObj} elementFor={elementFor} />)}
     </ul>
   );
 };

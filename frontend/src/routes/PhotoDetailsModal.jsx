@@ -11,10 +11,15 @@ const PhotoDetailsModal = (props) => {
 
   const { state, toggleModalDisplay } = props.appStateObj;
 
+  //extracts the photo ids of the modal's similar photos, creating a list of photo ids
   const similarPhotoIds = Object.values(state.modalInfo.similar_photos).map(element => element.id);
+  //extracts the photos from state.photos which are listed in the modalInfo.similar photos
+  //this is necessary because each individual photo's .similar_photos property contains a list of photo objects that lack the similar_photos property themselves
+  //we need the similar_photos to have similar_photos of their own, for when the user clicks on a similar photo in the modal
   const similarAppData = props.appData.photos.filter(element => similarPhotoIds.includes(element.id))
 
-  //re-create props with shorter list of photos to pass to photo-list
+  //re-creates props.appData with shorter list of photos to pass to PhotoList
+  //PhotoList component operates using props.appData, so appData needs to be edited to contain the correct similar photos
   const editedProps = {
     ...props,
     appData: {

@@ -6,8 +6,10 @@ import '../styles/PhotoFavButton.scss';
 function PhotoFavButton(props) {
 
   const { state, toggleFavourite } = props.appStateObj;
-  const id = props.id;
-  
+  const { id } = props;
+
+  //determines if the current photo item is already favourited or not. evaluates to true/false.
+  //FavIcon uses a boolean value called 'selected' to determine if it renders the heart icon as solid or hollow.
   const isFavourite = state.favourites.includes(id);
 
   return (
