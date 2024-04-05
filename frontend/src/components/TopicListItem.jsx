@@ -3,11 +3,14 @@ import React from "react";
 import "../styles/TopicListItem.scss";
 
 const TopicListItem = (props) => {
-  const {slug,title} = props.itemInfo;
-  
+  const { itemInfo, updateCategoryFilter } = props;
+  // console.log('props', props);
+  // console.log('itemInfo', itemInfo);
+  // console.log('updateCategoryFilter', updateCategoryFilter);
+
   return (
-    <div className="topic-list__item">
-      <span>{title}</span>
+    <div className="topic-list__item" onClick={() => updateCategoryFilter(itemInfo.id)} >
+      <span>{itemInfo.title}</span>
     </div>
   );
 };

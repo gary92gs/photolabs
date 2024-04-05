@@ -8,12 +8,13 @@ import FavBadge from './FavBadge';
 const TopNavigation = (props) => {
 
   const topics = props.appData.topics;
-  const favourites = props.appStateObj.state.favourites;
+  const { favourites } = props.appStateObj.state;
+  const { updateCategoryFilter } = props.appStateObj;
 
   return (
     <div className="top-nav-bar">
-      <span className="top-nav-bar__logo">PhotoLabs</span>
-      <TopicList topics={topics} />
+      <span className="top-nav-bar__logo" onClick={() => updateCategoryFilter('')}>PhotoLabs</span>
+      <TopicList topics={topics} updateCategoryFilter={updateCategoryFilter} />
       <FavBadge isFavPhotoExist={favourites.length} />
     </div>
   );

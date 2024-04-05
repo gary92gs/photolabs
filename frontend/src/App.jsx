@@ -16,6 +16,7 @@ const App = () => {
     topics: [],
     favourites: [],
     modalInfo: {},
+    categoryFilter: '',
   };
 
   const { state, dispatch } = useApplicationData(initialState);
@@ -26,25 +27,30 @@ const App = () => {
 
   //photoObj should be empty {} if modal is closing onClick
   const toggleModalDisplay = (photoObj) => {
-    dispatch({type: 'displayModal', data: photoObj});
+    dispatch({ type: 'displayModal', data: photoObj });
+  };
+
+  const updateCategoryFilter = (categoryId) => {
+    dispatch({ type: 'updateCategoryFilter', data: categoryId });
   };
 
   const appData = {
     photos: state.photos,
     topics: state.topics,
-  }
+  };
 
   const appStateObj = {
     state,
     toggleFavourite,
     toggleModalDisplay,
-  }
+    updateCategoryFilter,
+  };
 
   return (
     <div className="App">
       <h1>{state.modalInfo.length}</h1>
       <HomeRoute appData={appData} appStateObj={appStateObj} />
-      {state.modalInfo.id && <PhotoDetailsModal appData={appData} appStateObj={appStateObj}/>}
+      {state.modalInfo.id && <PhotoDetailsModal appData={appData} appStateObj={appStateObj} />}
     </div>
   );
 };

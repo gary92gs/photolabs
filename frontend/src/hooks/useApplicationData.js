@@ -43,6 +43,11 @@ const reducer = (state, action) => {
         photos: action.data,
       }
       break;
+    case 'updateCategoryFilter':
+      return {
+        ...state,
+        categoryFilter: action.data,
+      }
   }
 };
 
@@ -51,15 +56,19 @@ export const useApplicationData = (defaultState) => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   useEffect(() => { 
+    const path = state.categoryFilter ? `api/topics/photos/${state.categoryFilter}` : 'api/photos';
     Promise.all([
       fetch('/api/topics').then(res => res.json()),
-      fetch('/api/photos').then(res => res.json())
+      fetch(path).then(res => res.json())
     ])
       .then(([topicsData,photosData]) => {
         dispatch({type: 'loadTopics', data: topicsData});
         dispatch({type: 'loadPhotos', data: photosData});
       })
-  }, []);
+      .catch(error => {
+        console.error("Error fetching data: ", error);
+      })
+  }, [state.categoryFilter]);
 
   return { state, dispatch };
 };

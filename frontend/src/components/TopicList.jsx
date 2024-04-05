@@ -5,11 +5,12 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
 
-  const topics = props.topics;
+  const {topics, updateCategoryFilter} = props;
+  // console.log('props', props);
 
   return (
     <div className="top-nav-bar__topic-list">
-      {topics.map(element => <TopicListItem key={element.id} itemInfo={element} />)}
+      {topics.map(element => <TopicListItem key={element.id} itemInfo={element} updateCategoryFilter={updateCategoryFilter} />)}
     </div>
   );
 };
